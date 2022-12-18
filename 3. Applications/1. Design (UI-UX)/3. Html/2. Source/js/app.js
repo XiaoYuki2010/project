@@ -13,23 +13,32 @@
     // Mobile Menu Dropdown End
 
     // Mobile Submenu
-    $(".primary-menu__list.has-sub .primary-menu__link").on(
-      "click",
-      function (e) {
-        e.preventDefault();
-        body.classList.add("primary-submenu-toggler");
+    //  $(".primary-menu__list.has-sub .primary-menu__link").on(
+    //    "click",
+    //    function (e) {
+    //      e.preventDefault();
+    //      body.classList.add("primary-submenu-toggler");
+    //    }
+    //  );
+    //  $(".primary-menu__list.has-sub.active .primary-menu__link").on(
+    //    "click",
+    //   function (e) {
+    //      e.preventDefault();
+    //      body.classList.remove("primary-submenu-toggler");
+    //    }
+    //  );
+    //  $(".primary-menu__list.has-sub").on("click", function () {
+    //    $(this).toggleClass("active").siblings().removeClass("active");
+    //  });
+
+    $('.list primary-menu .primary-menu__list has-sub .primary-menu__sub').parent().hover(function() {
+      var submenu = $(this).children('.primary-menu__sub');
+      if ( $(submenu).is(':hidden') ) {
+        $(submenu).slideDown(2000);
+      } else {
+        $(submenu).slideUp(2000);
       }
-    );
-    $(".primary-menu__list.has-sub.active .primary-menu__link").on(
-      "click",
-      function (e) {
-        e.preventDefault();
-        body.classList.remove("primary-submenu-toggler");
-      }
-    );
-    $(".primary-menu__list.has-sub").on("click", function () {
-      $(this).toggleClass("active").siblings().removeClass("active");
-    });
+    }); 
     // Mobile Submenu End
 
     // Hero Slider
@@ -303,12 +312,25 @@
       clientSlider.slick({
         mobileFirst: true,
         slidesToShow: 1,
+    
+        autoplay:true,
+        autoplaySpeed:1500,
+        speed:1500,
+        arrows:true,
+        centerMode:true,
+      
         prevArrow:
           '<button type="button" class="client-slider__btn client-slider__btn-prev"><i class="las la-angle-left"></i></button>',
         nextArrow:
           '<button type="button" class="client-slider__btn client-slider__btn-next"><i class="las la-angle-right"></i></button>',
         responsive: [
+          
           {
+            breakpoint: 367,
+            settings: {
+              slidesToShow: 1,
+            },
+          },{
             breakpoint: 567,
             settings: {
               slidesToShow: 2,
@@ -317,13 +339,13 @@
           {
             breakpoint: 767,
             settings: {
-              slidesToShow: 3,
+              slidesToShow: 2,
             },
           },
           {
             breakpoint: 1199,
             settings: {
-              slidesToShow: 4,
+              slidesToShow: 3,
             },
           },
         ],
